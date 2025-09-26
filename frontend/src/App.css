@@ -1,0 +1,153 @@
+/* ======================================================================== */
+/* GENERAL STYLES & LAYOUT
+/* ======================================================================== */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F3EFE0; /* Dedicated Cream */
+  color: #343A40;    /* Focused Graphite */
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #E9E4D5; }
+::-webkit-scrollbar-thumb { background: #D1CBB8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #B9B29B; }
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+@media (min-width: 1024px) { .container { padding: 0 2rem; } }
+
+.button {
+    padding: 0.75rem 1.5rem; font-weight: 600; border-radius: 0.5rem;
+    cursor: pointer; transition: all 0.2s ease-in-out; border: none;
+    box-shadow: 0 4px 14px 0 rgba(0,0,0,0.07);
+}
+.button:hover { transform: translateY(-2px); }
+
+.button-primary { background-color: #4D2C5E; color: white; }
+.button-primary:hover { box-shadow: 0 6px 20px 0 rgba(77, 44, 94, 0.3); }
+
+.button-secondary { background-color: #E9E4D5; color: #343A40; }
+.button-secondary:hover { background-color: #D1CBB8; }
+
+input, select {
+    width: 100%; box-sizing: border-box; background-color: #E9E4D5;
+    color: #343A40; border: 2px solid #D1CBB8;
+    padding: 0.75rem; border-radius: 0.5rem; transition: border-color 0.2s;
+}
+input:focus, select:focus {
+    outline: none; border-color: #4D2C5E;
+}
+label { font-weight: 600; font-size: 0.875rem; color: #343A40; }
+
+/* ==========================================================
+// Main Layout & Header
+// ========================================================== */
+.app-main { padding: 1.5rem; max-width: 1280px; margin: 0 auto; }
+
+.header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #E9E4D5;
+  position: sticky; top: 0; z-index: 20;
+}
+.header-nav { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; padding-bottom: 1rem; }
+.header-brand { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+.header-brand svg { height: 2rem; width: 2rem; color: #4D2C5E; }
+.header-brand h1 { font-size: 1.5rem; font-weight: 700; margin: 0; }
+
+/* ==========================================================
+// Scheduler Page - Layout 3
+// ========================================================== */
+.scheduler-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+@media (min-width: 1024px) {
+  .scheduler-layout { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.05);
+}
+.card h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; margin-top: 0; }
+
+.form-container { display: flex; flex-direction: column; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.25rem; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.checkbox-group { display: flex; justify-content: space-around; padding-top: 0.5rem; }
+.checkbox-label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+.checkbox-input { height: 1rem; width: 1rem; accent-color: #4D2C5E; }
+
+.task-list-container { display: flex; flex-direction: column; height: 100%; }
+.task-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; max-height: 20rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.75rem; }
+.task-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background-color: #4D2C5E; color: white; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.task-item-name { font-weight: 600; }
+.task-delete-btn { background: none; border: none; color: white; opacity: 0.7; cursor: pointer; transition: opacity 0.2s; }
+.task-delete-btn:hover { opacity: 1; }
+.generate-btn { margin-top: 1rem; }
+.generate-btn button { background: #00C853; color: #343A40; width: 100%; font-size: 1.125rem; }
+.generate-btn button:disabled { background: #6C757D; cursor: not-allowed; transform: none; box-shadow: none; }
+
+.schedule-display-container { grid-column: auto; }
+@media (min-width: 1024px) {
+  .schedule-display-container { grid-column: span 2 / span 2; }
+}
+
+.schedule-timeline { list-style: none; padding: 0; margin: 0; max-height: 70vh; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
+.timeline-item { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; border-radius: 0.5rem; border: 1px solid #E9E4D5; transition: all 0.3s; }
+.timeline-item-break { background-color: #FAFAFA; }
+.timeline-item-time { font-family: monospace; font-size: 0.875rem; color: #6C757D; }
+.timeline-item-name { font-weight: 600; margin-left: 1rem; }
+.timeline-item-complete-btn { background: none; border: none; font-size: 1.5rem; color: #00C853; cursor: pointer; transition: transform 0.2s; }
+.timeline-item-complete-btn:disabled { color: #ADB5BD; cursor: not-allowed; }
+.timeline-item.completed { background-color: #E9ECEF; text-decoration: line-through; color: #6C757D; }
+
+.ai-suggestion-box {
+  padding: 0.75rem;
+  background-color: #e6fff9;
+  border-left: 4px solid #00C853;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.ai-suggestion-title { font-weight: 700; color: #4D2C5E; }
+.ai-suggestion-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ai-suggestion-btn {
+  font-size: 0.75rem; padding: 0.25rem 0.75rem; background-color: white;
+  border: 1px solid #00C853; border-radius: 9999px; cursor: pointer;
+  transition: all 0.2s;
+}
+.ai-suggestion-btn:hover { background-color: #00C853; color: white; }
+
+/* ==========================================================
+// Tracker Page
+// ========================================================== */
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+.calendar-weekdays { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; gap: 0.25rem; font-weight: 600; color: #6C757D; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid #E9E4D5; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 0.5rem; min-height: 50vh; }
+.calendar-day { position: relative; border: 1px solid #E9E4D5; border-radius: 0.5rem; padding: 0.5rem; display: flex; align-items: flex-start; justify-content: flex-start; transition: all 0.3s ease; }
+.calendar-day-green { background-color: #00C853; color: white; }
+.calendar-day-coral { background-color: #FF6F61; color: white; }
+.calendar-day-red { background-color: #D32F2F; color: white; }
+.calendar-day-slate { background-color: #F1F1F1; }
+.calendar-day-tooltip {
+    position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 0.5rem;
+    width: max-content; padding: 0.25rem 0.5rem; background-color: #343A40; color: #F3EFE0;
+    font-size: 0.75rem; border-radius: 0.375rem; opacity: 0; transition: opacity 0.3s; pointer-events: none;
+}
+.calendar-day:hover .calendar-day-tooltip { opacity: 1; }
+
